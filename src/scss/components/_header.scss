@@ -1,0 +1,226 @@
+.apposition {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background-color: var(--color-balticSea);
+    opacity: .8;
+    padding: 30px 150px 0;
+
+    &__btn {
+        float: right;
+    }
+
+    &-menu {
+        padding-top: 150px;
+
+        &__list {
+            max-width: 272px;
+        }
+
+        &__title {
+            font-size: 60px;
+            line-height: 88px;
+            text-transform: uppercase;
+            color: var(--color-mongoose);
+            font-family: 'Scheherazade New', serif;
+            margin-bottom: 25px;
+        }
+
+        &__nav {
+            padding-left: 30px;
+        }
+
+        &__item a {
+            font-size: 24px;
+            line-height: 29px;
+            position: relative;
+            transition: margin-left .5s ease;
+        }
+        
+        &__item:not(:last-child) {
+            margin-bottom: 30px;
+        }
+
+        &__item a::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--color-mongoose);
+            box-shadow: 0px 0px 20px #BBA182;
+            border-radius: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            left: -30px;
+        }
+
+        &__item:hover a {
+            margin-left: 30px;
+        }
+
+        &__item:hover a::before{
+            animation-name: item;
+            animation-duration: 1s;
+            animation-delay: .5s;
+            animation-timing-function: linear;
+        }
+    }
+}
+
+@keyframes item {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+} 
+
+.header {
+    padding-top: 18px;
+
+    &-burger__img {
+        margin-top: 5px;
+    }
+
+    &-container {
+        @include flex-all-sb;
+        padding-top: 18px;
+    }
+
+    .logo-box {
+        display: flex;
+        max-width: 421px;
+        padding-top: 13px;
+
+        .logo {
+            margin-right: 20px;
+        }
+
+        &__descr {
+            font-size: 14px;
+            line-height: 17px;
+            color: var(--color-width);
+        }
+    }
+
+    &-nav {
+        width: 522px;
+        padding-top: 16px;
+
+        &__list {
+            @include flex-all-sb;
+        }
+
+        &__link a {
+            font-size: 17px;
+            line-height: 21px;
+            color: var(--color-width);
+        }
+    }
+    &-tel{
+        @include flex-v-center;
+        
+        .pulse {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            border-radius: 100%;
+            position: relative;
+            z-index: -1;
+            top: 8px;
+        }
+
+        .pulse::before,
+        .pulse::after {
+            content: '';
+            position: absolute;
+            border-left: 1px solid var(--color-mongoose);
+            border-top: 1px solid var(--color-mongoose);
+            border-bottom: 1px solid var(--color-mongoose);
+            border-right: 1px solid  #44424bb0;
+            left: -20px;
+            right: -20px;
+            top: -20px;
+            bottom: -20px;
+            border-radius: 50%;
+            animation: pulse 2s linear infinite;
+        }   
+
+        .pulse::after {
+            animation-delay: 1s;
+        } 
+        
+        .tel-icon {
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        &__box {
+            @include flex;
+            margin-left: 10px;
+        }
+
+        &__text {
+            font-size: 12px;
+            line-height: 15px;
+            color: var(--color-width);
+        }
+
+        &__box a {
+            font-size: 17px;
+            line-height: 21px;
+            color: var(--color-width);
+        }
+    }
+
+    &-watsapp {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        
+        &__text {
+            margin-left: 14px;
+            color: var(--color-width);
+            font-size: 17px;
+            line-height: 142.4%;
+        }
+    }
+
+    &-burger button {
+        background: var(--color-width);
+        border-radius: 100%;
+        width: 60px;
+        height: 60px;
+        position: relative;
+    }
+
+    &-burger img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50% , -50%);
+    }
+}
+
+@keyframes pulse {
+0% {
+    transform: scale(0.4);
+    opacity: 1;
+}
+50% {
+    opacity: 0.5;
+}
+100% {
+    transform: scale(1);
+    opacity: 0;
+}
+}  
