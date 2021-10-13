@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background: linear-gradient(90deg, rgba(32, 31, 36, 0.96) 31.85%, rgba(32, 31, 36, 0.69) 100%);
+  background: var(--color-balticSea);
   margin: 0;
   font-family: "Avenir Next Cyr", sans-serif;
   font-weight: 400;
@@ -30,7 +30,9 @@ p {
 }
 
 .site-container {
-  overflow: hidden; // если используете на сайте position: sticky - уберите эту настройку
+  overflow: hidden;
+  max-width: 1920px; // если используете на сайте position: sticky - уберите эту настройку
+  margin: 0 auto;
 }
 
 .is-hidden {
@@ -58,4 +60,10 @@ p {
 
 .js-focus-visible :focus:not(.focus-visible) {
   outline: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

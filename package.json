@@ -20,6 +20,7 @@
     "browser-sync": "^2.27.5",
     "del": "^6.0.0",
     "editorconfig-checker": "^4.0.2",
+    "gsap": "^3.8.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-babel": "^8.0.0",
@@ -44,5 +45,6 @@
     "stylelint-declaration-block-no-ignored-properties": "^2.4.0",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.20.1"
-  }
+  },
+  "dependencies": {}
 }

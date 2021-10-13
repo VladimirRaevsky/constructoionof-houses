@@ -2,22 +2,41 @@
     position: absolute;
     left: 0px;
     top: 0px;
-    width: 100%;
+    right: 0;
+    max-width: 1920px;
     height: 100vh;
+    margin: 0 auto;
     z-index: 10;
     background-color: var(--color-balticSea);
-    opacity: .8;
-    padding: 30px 150px 0;
+    padding: 30px 111px 0;
+    pointer-events: none;
+    transform: translate(-100%);
+    transition: all 1s linear, opacity 1.1s linear;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
 
-    &__btn {
-        float: right;
+    &-active {
+        opacity: .8;
+        transform: translate(0%);
+        transition: all 1s linear, opacity 1.1s linear;
+        pointer-events: auto;
+    }
+
+    .apposition-active .header-btn {
+        opacity: 0;
+    }
+
+    &-btn {
+        display: flex;
     }
 
     &-menu {
-        padding-top: 150px;
+        padding-top: 105px;
 
         &__list {
-            max-width: 272px;
+            display: inline-flex;
+            flex-direction: column;
         }
 
         &__title {
@@ -58,30 +77,29 @@
             left: -30px;
         }
 
-        &__item:hover a {
+        &__item a:hover {
             margin-left: 30px;
+            transition: margin-left .5s ease;
         }
 
-        &__item:hover a::before{
-            animation-name: item;
-            animation-duration: 1s;
-            animation-delay: .5s;
-            animation-timing-function: linear;
+        &__item a:hover::before {
+            opacity: 1;
         }
     }
 }
 
-@keyframes item {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-} 
+.apposition-active .header-burger button {
+    opacity: 0;
+}
 
 .header {
     padding-top: 18px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    z-index: 2;
 
     &-burger__img {
         margin-top: 5px;
@@ -131,7 +149,7 @@
             text-align: center;
             border-radius: 100%;
             position: relative;
-            z-index: -1;
+            z-index: 2;
             top: 8px;
         }
 
@@ -142,7 +160,7 @@
             border-left: 1px solid var(--color-mongoose);
             border-top: 1px solid var(--color-mongoose);
             border-bottom: 1px solid var(--color-mongoose);
-            border-right: 1px solid  #44424bb0;
+            border-right: 1px solid  var(--color-balticSea);
             left: -20px;
             right: -20px;
             top: -20px;
@@ -186,13 +204,119 @@
         display: flex;
         align-items: center;
         cursor: pointer;
-        
+        position: relative;
+
+        &__menu {
+            margin-top: 5px;
+            padding: 3px 5px 5px 5px;
+            position: absolute;
+            top: 40px;
+            width: 150px;
+            text-align: center;
+            left: -15px;
+            line-height: 15px;
+            pointer-events: none;
+            
+
+            span {
+                color: var(--color-balticSea);
+                font-size: 14px;
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+
         &__text {
             margin-left: 14px;
             color: var(--color-width);
             font-size: 17px;
             line-height: 142.4%;
         }
+    }
+
+    &-watsapp:hover .header-watsapp__menu span {
+        animation: blink 1.5s ease-in-out infinite;
+        animation-direction: alternate;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    @keyframes blink {
+        0% {
+            color: var(--color-balticSea);
+        }
+    
+        100% {
+            color: rgb(255, 255, 255);
+        }
+    }
+
+    .header-watsapp__menu::before,
+    .header-watsapp__menu::after {
+        content: '';
+        width: 100%;
+        height: 1px;
+        background: red;
+        position: absolute;
+        left: 0;
+        transition: transform .7s;
+    }
+
+    .header-watsapp__menu::before {
+        top: -1px;
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    &-watsapp:hover .header-watsapp__menu:before {
+        transform: scaleX(1);
+        transform-origin: right;
+    }
+
+    .header-watsapp__menu::after {
+        bottom: 0px;
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+
+    &-watsapp:hover .header-watsapp__menu:after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    .header-watsapp__menu div::before,
+    .header-watsapp__menu div::after {
+        content: '';
+        width: 1px;
+        height: 100%;
+        background: red;
+        position: absolute;
+        top: 0;
+        transition: transform .5s;
+    }
+
+    .header-watsapp__menu div::before {
+        left: 0;
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+
+    &-watsapp:hover .header-watsapp__menu div::before {
+        left: 0;
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+
+    .header-watsapp__menu div::after {
+        right: 0;
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    &-watsapp:hover .header-watsapp__menu div::after {
+        right: 0;
+        transform: scaleY(1);
+        transform-origin: bottom;
     }
 
     &-burger button {
