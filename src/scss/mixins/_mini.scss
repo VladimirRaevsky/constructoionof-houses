@@ -33,4 +33,17 @@
 }
 
 
+@mixin fz-60 {
+  font-size: 60px;
+  line-height: 88px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'Scheherazade New', serif;
+  font-weight: 400;
+}
 
+@mixin  fz-18 {
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+}
